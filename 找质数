@@ -1,0 +1,37 @@
+#coding=utf-8
+import os    #打开os库
+import math   #打开math库
+os.chdir('E:\\test\\Python')    #将当前目录转到目标目录
+
+def is_zhishu(num):
+    a=num 
+    c=0
+    for i in range(2,a):
+        if a%i!=0:
+            c=c+1
+            if c>math.sqrt(a)+2:
+                return True
+                break 
+        else:
+            return False
+            break 
+'''
+判断是否是质数
+如果余数有0，就不是，如果不是0，就累计
+当累计超过根号a个时，就是质数
+'''
+if __name__=='__main__':
+    a=[2,3]
+    for i in range(5,9999,2):
+        if is_zhishu(i):
+            a.append(i)
+    
+    f=open('zhishu.txt','a')   #打开文件“zhishu.txt”，a代表添加
+    for i in a:                #由于列表不能直接写入文件，所以转化成字符串，用','隔开，方便日后转换
+        m="{}".format(i)
+        f.write(m)
+        f.write(',')
+    f.close            #关闭文件
+    
+    print "ok"
+    
